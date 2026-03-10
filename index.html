@@ -1,106 +1,502 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leave a Review</title>
 
 <style>
 
+*{
+box-sizing:border-box;
+font-family: 'Segoe UI', sans-serif;
+}
+
 body{
-font-family: Arial, sans-serif;
-background:#f2f2f2;
+
 margin:0;
-padding:0;
+height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-height:100vh;
+
+background:linear-gradient(135deg,#667eea,#764ba2);
+
 }
 
-.container{
-background:white;
-padding:25px;
-border-radius:10px;
+.card{
+
 width:90%;
-max-width:450px;
-box-shadow:0 0 15px rgba(0,0,0,0.1);
+max-width:420px;
+padding:30px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.15);
+
+backdrop-filter: blur(15px);
+
+box-shadow:0 20px 50px rgba(0,0,0,0.3);
+
 text-align:center;
+
+color:white;
+
+}
+
+.title{
+
+font-size:26px;
+font-weight:700;
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+font-size:14px;
+opacity:0.8;
+margin-bottom:20px;
+
+}
+
+.stars{
+
+font-size:22px;
+margin-bottom:15px;
+
 }
 
 textarea{
+
 width:100%;
 height:120px;
-padding:10px;
-border-radius:6px;
-border:1px solid #ccc;
-resize:none;
+
+border-radius:12px;
+
+border:none;
+
+padding:12px;
+
 font-size:15px;
+
+resize:none;
+
+outline:none;
+
+}
+
+.buttons{
+
+margin-top:15px;
+
 }
 
 button{
-padding:12px 20px;
-margin-top:10px;
-border:none;
-border-radius:6px;
-background:#4285F4;
-color:white;
-font-size:15px;
-cursor:pointer;
+
 width:100%;
+
+padding:13px;
+
+border:none;
+
+border-radius:10px;
+
+font-size:15px;
+
+cursor:pointer;
+
+margin-top:10px;
+
+font-weight:600;
+
+transition:0.3s;
+
 }
 
-button.secondary{
-background:#777;
+.change{
+
+background:rgba(255,255,255,0.2);
+
+color:white;
+
+}
+
+.change:hover{
+
+background:rgba(255,255,255,0.35);
+
+}
+
+.review{
+
+background:#00e676;
+
+color:black;
+
+}
+
+.review:hover{
+
+transform:scale(1.03);
+
+}
+
+.footer{
+
+margin-top:15px;
+font-size:12px;
+opacity:0.8;
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<div class="card">
 
-<h2>Share Your Experience ⭐</h2>
+<div class="title">⭐ Leave a Review</div>
+
+<div class="subtitle">
+Your feedback helps this business grow
+</div>
+
+<div class="stars">
+★★★★★
+</div>
 
 <textarea id="reviewBox"></textarea>
 
-<button onclick="changeReview()" class="secondary">
-Change Review
+<div class="buttons">
+
+<button class="change" onclick="changeReview()">
+🔄 Generate Another Review
 </button>
 
-<button onclick="leaveReview()">
-Leave Google Review
+<button class="review" onclick="leaveReview()">
+📋 Copy & Leave Google Review
 </button>
+
+</div>
+
+<div class="footer">
+Thank you for supporting local business ❤️
+</div>
 
 </div>
 
 <script>
 
-const reviews = [
+const reviews=[
 
-"Very professional staff and excellent service, really loved the haircut and styling here",
-"Great salon experience with friendly staff and clean environment, highly recommended",
-"Best place for haircut and grooming, staff is very skilled and polite",
-"Really satisfied with the service, they pay attention to every small detail",
-"Nice ambience and professional team, my haircut turned out exactly how I wanted",
-"Affordable prices with great quality service, will definitely visit again",
-"Staff is very cooperative and experienced, overall a wonderful experience",
-"Clean salon with modern equipment and very talented hairstylists",
-"Excellent customer service and amazing hair styling, totally worth it",
-"One of the best salons in the area, very professional and hygienic",
-"Very relaxing experience and great results, highly impressed with the service",
-"Professional staff and quick service, really happy with my haircut",
-"Nice atmosphere and very skilled barbers, great place for grooming",
-"Highly satisfied with the service, staff is friendly and welcoming",
-"Great attention to detail and very professional approach, loved the service"
+"Amazing service and very friendly staff. Highly recommended!",
 
+"Great experience. The quality and professionalism were excellent.",
+
+"Very satisfied with the service. Will definitely come again.",
+
+"Prisha Enterprises Ghaziabad me LED TV kharidne ke liye bahut achhi shop hai yaha quality products best price par milte hain service bhi kaafi fast hai",
+
+"Prisha Enterprises par LED TV ka collection kaafi achha hai staff helpful hai aur Ghaziabad me reasonable price par TV mil gaya",
+
+"Ghaziabad me LED TV lene ke liye Prisha Enterprises ek trusted shop hai yaha original products aur achhi guidance milti hai",
+
+"Prisha Enterprises se LED TV purchase karna bahut easy experience raha price genuine tha aur delivery bhi fast mili",
+
+"Ghaziabad area me LED TV ke liye Prisha Enterprises best shop hai yaha branded TV sahi price par available hain",
+
+"Prisha Enterprises par LED TV ka collection kaafi impressive hai staff polite hai aur service bhi quick hai",
+
+"Ghaziabad me agar koi LED TV lena chahta hai to Prisha Enterprises ek reliable store hai yaha good deals milti hain",
+
+"Prisha Enterprises se LED TV kharidkar bahut satisfaction mila product quality aur price dono best hain",
+
+"Ghaziabad me Prisha Enterprises LED TV ke liye ek popular shop hai yaha har range ke TV available hain",
+
+"Prisha Enterprises par LED TV purchase karte waqt staff ne achhi guidance di aur best model choose karne me help ki",
+
+"Ghaziabad me Prisha Enterprises LED TV ke liye best price offer karta hai service bhi kaafi professional hai",
+
+"Prisha Enterprises ek trusted LED TV shop hai jaha branded products aur genuine warranty milti hai",
+
+"Ghaziabad me LED TV lene ke liye Prisha Enterprises par kaafi options milte hain aur staff friendly hai",
+
+"Prisha Enterprises par LED TV ki pricing kaafi reasonable hai aur product quality bhi excellent hai",
+
+"Ghaziabad me Prisha Enterprises LED TV ke liye best electronics store hai yaha good customer support milta hai",
+
+"Prisha Enterprises se LED TV kharidne ka experience smooth raha installation bhi jaldi ho gaya",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises ek trusted name hai yaha latest models available hain",
+
+"Prisha Enterprises par LED TV ka collection kaafi updated hai aur price bhi market se better hai",
+
+"Ghaziabad me LED TV purchase karne ke liye Prisha Enterprises ek perfect place hai",
+
+"Prisha Enterprises me LED TV lene par achhi discount offer bhi mili aur service bhi quick thi",
+
+"Prisha Enterprises Ghaziabad me LED TV shop ke roop me kaafi popular hai yaha quality aur price dono achhe hain",
+
+"Prisha Enterprises par LED TV ki variety kaafi achhi hai aur staff cooperative hai",
+
+"Ghaziabad me Prisha Enterprises se LED TV purchase karna ek achha decision raha",
+
+"Prisha Enterprises par LED TV ke saath proper billing aur warranty bhi milti hai",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises reliable shop hai jaha achha customer experience milta hai",
+
+"Prisha Enterprises me LED TV ke kaafi latest models available hain aur price bhi genuine hai",
+
+"Ghaziabad me Prisha Enterprises LED TV ke liye best electronics store me se ek hai",
+
+"Prisha Enterprises par LED TV purchase karne par fast service aur good support mila",
+
+"Prisha Enterprises Ghaziabad me LED TV buyers ke liye ek trusted shop hai",
+
+"Prisha Enterprises me LED TV ka collection impressive hai aur staff knowledgeable hai",
+
+"Prisha Enterprises par LED TV lene par achha discount aur quick delivery mili",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises ek recommended shop hai",
+
+"Prisha Enterprises par LED TV purchase karna ek great experience raha",
+
+"Prisha Enterprises me LED TV ke kaafi branded options available hain",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises best price provide karta hai",
+
+"Prisha Enterprises par LED TV ke saath proper service support bhi milta hai",
+
+"Ghaziabad me LED TV lene ke liye Prisha Enterprises ek trusted electronics shop hai",
+
+"Prisha Enterprises par LED TV ki quality aur pricing dono impressive hain",
+
+"Prisha Enterprises se LED TV kharidne par fast response aur helpful staff mila",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises ek reliable store hai",
+
+"Prisha Enterprises par LED TV purchase karte waqt bahut achha experience mila",
+
+"Prisha Enterprises me LED TV ke liye best deals aur offers milte hain",
+
+"Ghaziabad me LED TV purchase karne ke liye Prisha Enterprises recommended shop hai",
+
+"Prisha Enterprises par LED TV ka collection kaafi wide hai",
+
+"Prisha Enterprises se LED TV lene par proper guidance aur good service mili",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises ek perfect electronics store hai",
+
+"Prisha Enterprises par LED TV ki pricing aur service dono excellent hain",
+
+"Prisha Enterprises me LED TV kharidna ek smooth aur satisfying experience raha",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye best option hai",
+
+"Prisha Enterprises par LED TV purchase karna value for money experience raha",
+
+"Prisha Enterprises Ghaziabad me LED TV kharidne ke liye bahut reliable shop hai yaha quality products aur genuine price milte hain",
+
+"Prisha Enterprises par LED TV ka collection kaafi achha hai Ghaziabad me best electronics shop ka experience mila",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises par achhi variety aur reasonable price dekhne ko mile",
+
+"Prisha Enterprises se Smart LED TV kharidkar bahut achha experience raha staff helpful aur service fast hai",
+
+"Ghaziabad me LED TV purchase karne ke liye Prisha Enterprises ek trusted store hai",
+
+"Prisha Enterprises par branded LED TV ka collection kaafi impressive hai aur price bhi genuine hai",
+
+"Prisha Enterprises Ghaziabad me LED TV buyers ke liye ek perfect electronics store hai",
+
+"Prisha Enterprises par LED TV purchase karte waqt achhi guidance aur support mila",
+
+"Ghaziabad me LED TV lene ke liye Prisha Enterprises ek recommended shop hai",
+
+"Prisha Enterprises par LED TV ki pricing aur service dono kaafi satisfactory hain",
+
+"Prisha Enterprises me Smart LED TV ke latest models available hain aur price bhi best hai",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye popular electronics shop hai",
+
+"Prisha Enterprises par LED TV kharidne ka experience smooth aur satisfying raha",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises par achhi deals milti hain",
+
+"Prisha Enterprises par LED TV ki quality aur service kaafi impressive hai",
+
+"Prisha Enterprises se LED TV lene par proper bill aur warranty bhi mili",
+
+"Ghaziabad me LED TV shop ke liye Prisha Enterprises ek trusted name hai",
+
+"Prisha Enterprises par LED TV ke kaafi options available hain aur staff friendly hai",
+
+"Prisha Enterprises se LED TV purchase karna ek value for money experience raha",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises best electronics shop me se ek hai",
+
+"Prisha Enterprises par Smart LED TV ki range kaafi achhi hai",
+
+"Prisha Enterprises me LED TV lene par quick response aur good service mili",
+
+"Ghaziabad me LED TV kharidne ke liye Prisha Enterprises perfect store hai",
+
+"Prisha Enterprises par LED TV purchase karne par achhi discount offer mili",
+
+"Prisha Enterprises me LED TV ke saath installation support bhi achha mila",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye best price provide karta hai",
+
+"Prisha Enterprises par LED TV ki variety aur service dono excellent hain",
+
+"Prisha Enterprises se LED TV kharidna ek great experience raha",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises ek reliable shop hai",
+
+"Prisha Enterprises par LED TV purchase karte waqt staff cooperative tha",
+
+"Prisha Enterprises me LED TV ka collection kaafi updated hai",
+
+"Prisha Enterprises Ghaziabad me LED TV buyers ke liye trusted electronics shop hai",
+
+"Prisha Enterprises par LED TV ke saath achhi customer service bhi milti hai",
+
+"Ghaziabad me LED TV ke liye Prisha Enterprises par achha selection milta hai",
+
+"Prisha Enterprises me LED TV ki quality aur pricing dono impressive hain",
+
+"Prisha Enterprises par LED TV kharidne par fast billing aur quick delivery mili",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye best store experience mila",
+
+"Prisha Enterprises me LED TV lene par helpful staff aur good support mila",
+
+"Prisha Enterprises par LED TV ke latest models easily available hain",
+
+"Ghaziabad me LED TV shop ke roop me Prisha Enterprises kaafi trusted hai",
+
+"Prisha Enterprises par LED TV purchase karna smooth aur easy process raha",
+
+"Prisha Enterprises me LED TV ki range kaafi wide hai",
+
+"Prisha Enterprises Ghaziabad me LED TV buyers ke liye recommended shop hai",
+
+"Prisha Enterprises par LED TV kharidne par achha discount mila",
+
+"Prisha Enterprises me LED TV ki pricing market se better lagi",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye reliable electronics shop hai",
+
+"Prisha Enterprises par Smart LED TV ke kaafi branded options milte hain",
+
+"Prisha Enterprises se LED TV purchase karna ek satisfying experience raha",
+
+"Prisha Enterprises par LED TV ke saath proper guidance bhi mili",
+
+"Prisha Enterprises Ghaziabad me LED TV shop ke liye best option hai",
+
+"Prisha Enterprises par LED TV ki quality aur service kaafi achhi hai",
+
+"Prisha Enterprises me LED TV ke latest features wale models available hain",
+
+"Prisha Enterprises Ghaziabad me LED TV buyers ke liye trusted destination hai",
+
+"Prisha Enterprises par LED TV purchase karte waqt good support mila",
+
+"Prisha Enterprises se LED TV lene par achha customer experience mila",
+
+"Prisha Enterprises me LED TV ki variety aur price dono impressive hain",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye popular electronics store hai",
+
+"Prisha Enterprises par LED TV purchase karne par quick service mili",
+
+"Prisha Enterprises me LED TV lene par genuine product aur warranty mili",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye best deal milti hai",
+
+"Prisha Enterprises par LED TV kharidne par achha satisfaction mila",
+
+"Prisha Enterprises me LED TV ka selection kaafi achha hai",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye reliable shop hai",
+
+"Prisha Enterprises par LED TV purchase karte waqt staff polite tha",
+
+"Prisha Enterprises me LED TV ki pricing reasonable hai",
+
+"Prisha Enterprises Ghaziabad me LED TV buyers ke liye recommended store hai",
+
+"Prisha Enterprises par LED TV ki range aur service dono great hain",
+
+"Prisha Enterprises me LED TV lene ka experience kaafi achha raha",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye perfect electronics shop hai",
+
+"Prisha Enterprises par LED TV purchase karna easy aur convenient raha",
+
+"Prisha Enterprises me LED TV ka collection impressive hai",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye trusted electronics store hai",
+
+"Prisha Enterprises par LED TV ke saath achhi customer support milti hai",
+
+"Prisha Enterprises me LED TV ke latest models easily available hain",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye best service mili",
+
+"Prisha Enterprises par LED TV kharidne par genuine price mila",
+
+"Prisha Enterprises me LED TV purchase karna smooth process raha",
+
+"Prisha Enterprises Ghaziabad me LED TV buyers ke liye best shop hai",
+
+"Prisha Enterprises par LED TV ki pricing aur offers achhe hain",
+
+"Prisha Enterprises me LED TV ke branded options available hain",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye best electronics store hai",
+
+"Prisha Enterprises par LED TV purchase karte waqt good experience mila",
+
+"Prisha Enterprises me LED TV lene par quick delivery mili",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye reliable destination hai",
+
+"Prisha Enterprises par LED TV ka collection kaafi wide hai",
+
+"Prisha Enterprises me LED TV ki quality aur price dono best hain",
+
+"Prisha Enterprises Ghaziabad me LED TV shop ke roop me popular hai",
+
+"Prisha Enterprises par LED TV purchase karna value for money raha",
+
+"Prisha Enterprises me LED TV ke kaafi latest options available hain",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye recommended store hai",
+
+"Prisha Enterprises par LED TV ki service aur support impressive hai",
+
+"Prisha Enterprises me LED TV lene par achha customer experience mila",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye trusted electronics shop hai",
+
+"Prisha Enterprises par LED TV purchase karna satisfying experience raha",
+
+"Prisha Enterprises me LED TV ka collection aur price dono achhe hain",
+
+"Prisha Enterprises Ghaziabad me LED TV ke liye best shopping place hai",
 ];
 
 function randomReview(){
 
-const index = Math.floor(Math.random() * reviews.length);
+const index=Math.floor(Math.random()*reviews.length);
 
-document.getElementById("reviewBox").value = reviews[index];
+document.getElementById("reviewBox").value=reviews[index];
 
 }
 
@@ -112,11 +508,11 @@ randomReview();
 
 function leaveReview(){
 
-const text = document.getElementById("reviewBox").value;
+const text=document.getElementById("reviewBox").value;
 
 navigator.clipboard.writeText(text);
 
-window.open("https://www.google.com/search?q=Venus+beauty+salon&sca_esv=ad51375bc05ed99f&sxsrf=ANbL-n5UTMO7pqNrg4OvxAu8g4cS5-Rr4w%3A1773073930504&source=hp&ei=CvauaYa3HJieseMPxPGl0QY&biw=360&bih=712&oq=Venus+beauty+salon&gs_lp=EhFtb2JpbGUtZ3dzLXdpei1ocCISVmVudXMgYmVhdXR5IHNhbG9uMgoQIxiABBgnGIoFMg4QABiABBiRAhjJAxiKBTILEAAYgAQYkQIYigUyCxAAGIAEGJECGIoFMgsQABiABBiRAhiKBTIOEC4YgAQYxwEYjgUYrwEyBRAAGIAEMgUQABiABEj-D1CuCViuCXABeACQAQCYAewBoAHsAaoBAzItMbgBA8gBAPgBAZgCAqACtwKoAi3CAgcQIxgnGOoCwgIKECMY8AUYJxjqAsICDRAuGNEDGMcBGCcY6gLCAhAQABgDGLQCGOoCGI8B2AEBmAM68QXMYLxOYEidqroGBAgBGAqSBwUxLjAuMaAHmAmyBwMyLTG4B_wBwgcHMy0xLjAuMcgHSYAIAA&sclient=mobile-gws-wiz-hp#vhid=43:/g/11c5bkq0nx&vssid=reviews-collection-viewer-reviews-fact-entrypoint");
+window.open("https://www.google.com/search?q=prisha+enterprises&oq=prisha+&gs_lcrp=EgZjaHJvbWUqDggAEEUYJxg7GIAEGIoFMg4IABBFGCcYOxiABBiKBTIGCAEQRRg5MggIAhBFGCcYOzIGCAMQRRg7MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDwyBwgIEAAYgAQyBwgJEAAYgAQyBwgKEAAYgAQyBwgLEAAYgAQyBwgMEAAYgAQyBwgNEAAYgAQyBggOEEUYPNIBCDY4MDJqMGo3qAIUsAIB8QUZ-q8n1bNDGQ&client=ms-android-oneplus-terr1-rso2&sourceid=chrome-mobile&ie=UTF-8#vhid=/g/11z05mm9cb&vssid=dcpt");
 
 }
 
